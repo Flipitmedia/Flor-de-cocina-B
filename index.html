@@ -3,27 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flor de Cocina | Platos Preparados - Estilo Take a Break</title>
+    <title>Flor de Cocina | Platos Preparados al Vacío - Santiago</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Paleta Moderno/Corporativa (Estilo Take a Break) */
-            --color-primary: #4CAF50; /* Verde Fresco */
+            --color-primary: #4CAF50;
             --color-primary-dark: #388E3C;
-            --color-secondary: #212529; /* Negro Suave */
-            --color-accent: #FF5722; /* Naranjo para acciones/descuentos */
-            --color-bg-light: #F8F9FA; /* Gris muy claro de fondo */
+            --color-primary-light: #81C784;
+            --color-secondary: #212529;
+            --color-accent: #FF5722;
+            --color-accent-dark: #E64A19;
+            --color-bg-light: #F8F9FA;
             --color-white: #FFFFFF;
             --color-gray-text: #6c757d;
+            --color-gray-light: #e9ecef;
             
-            /* Tipografía */
             --font-heading: 'Montserrat', sans-serif;
             --font-body: 'Open Sans', sans-serif;
             
-            /* UI Elements */
             --shadow-card: 0 2px 10px rgba(0,0,0,0.05);
             --shadow-hover: 0 10px 25px rgba(0,0,0,0.1);
-            --radius-btn: 6px; /* Bordes más rectos, estilo botón moderno */
+            --radius-btn: 6px;
             --radius-card: 12px;
         }
 
@@ -45,15 +45,19 @@
             overflow-x: hidden;
         }
 
-        /* Top Bar de Anuncios */
+        /* Top Bar */
         .top-bar {
             background: var(--color-secondary);
             color: var(--color-white);
             text-align: center;
-            padding: 0.5rem;
-            font-size: 0.8rem;
+            padding: 0.6rem 1rem;
+            font-size: 0.85rem;
             font-weight: 600;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
+        }
+
+        .top-bar strong {
+            color: var(--color-primary-light);
         }
 
         /* Header */
@@ -78,7 +82,7 @@
         .logo {
             font-family: var(--font-heading);
             font-weight: 800;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: var(--color-primary);
             text-transform: uppercase;
             text-decoration: none;
@@ -91,6 +95,10 @@
             color: var(--color-secondary);
         }
 
+        .logo-icon {
+            font-size: 1.5rem;
+        }
+
         nav {
             display: flex;
             gap: 2rem;
@@ -100,11 +108,10 @@
         nav a {
             text-decoration: none;
             color: var(--color-secondary);
-            font-size: 0.95rem;
             font-weight: 600;
-            transition: color 0.2s ease;
             text-transform: uppercase;
             font-size: 0.85rem;
+            transition: color 0.2s ease;
         }
 
         nav a:hover {
@@ -114,18 +121,26 @@
         .cart-btn {
             background: var(--color-primary);
             color: var(--color-white);
-            padding: 0.5rem 1.2rem;
+            padding: 0.6rem 1.25rem;
             border-radius: var(--radius-btn);
             display: flex;
             align-items: center;
             gap: 0.5rem;
             font-weight: 700;
+            font-size: 0.9rem;
             transition: background 0.3s;
+            text-decoration: none;
         }
 
         .cart-btn:hover {
             background: var(--color-primary-dark);
-            color: white; /* Asegura contraste */
+        }
+
+        .cart-count {
+            background: var(--color-accent);
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-size: 0.75rem;
         }
 
         /* Hero Section */
@@ -146,9 +161,9 @@
 
         .hero-text h1 {
             font-family: var(--font-heading);
-            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
             font-weight: 800;
-            line-height: 1.1;
+            line-height: 1.15;
             margin-bottom: 1rem;
             color: var(--color-secondary);
         }
@@ -160,8 +175,34 @@
         .hero-text p {
             font-size: 1.1rem;
             color: var(--color-gray-text);
+            margin-bottom: 1.5rem;
+            max-width: 480px;
+        }
+
+        .hero-features {
+            display: flex;
+            gap: 1.5rem;
             margin-bottom: 2rem;
-            max-width: 500px;
+            flex-wrap: wrap;
+        }
+
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--color-gray-text);
+        }
+
+        .hero-feature-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--color-primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
         }
 
         .btn-primary {
@@ -176,34 +217,86 @@
             font-size: 0.9rem;
             transition: transform 0.2s, background 0.2s;
             box-shadow: 0 4px 15px rgba(255, 87, 34, 0.3);
+            margin-right: 1rem;
         }
 
         .btn-primary:hover {
-            background: #E64A19;
+            background: var(--color-accent-dark);
             transform: translateY(-2px);
         }
 
-        .hero-image-container {
-            position: relative;
+        .btn-secondary {
+            display: inline-block;
+            background: transparent;
+            color: var(--color-secondary);
+            padding: 1rem 1.5rem;
+            border: 2px solid var(--color-secondary);
+            border-radius: var(--radius-btn);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-secondary);
+            color: var(--color-white);
         }
 
         .hero-image {
             width: 100%;
             aspect-ratio: 4/3;
-            background: #eee;
+            background: var(--color-gray-light);
             border-radius: var(--radius-card);
-            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 5rem;
+            font-size: 6rem;
             box-shadow: var(--shadow-hover);
+            position: relative;
+        }
+
+        .hero-badge {
+            position: absolute;
+            bottom: -15px;
+            left: 20px;
+            background: var(--color-white);
+            padding: 1rem 1.25rem;
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-hover);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .hero-badge-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--color-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: white;
+        }
+
+        .hero-badge-text {
+            font-size: 0.8rem;
+            color: var(--color-gray-text);
+        }
+
+        .hero-badge-text strong {
+            display: block;
+            font-size: 1rem;
+            color: var(--color-secondary);
+            font-family: var(--font-heading);
         }
 
         /* Features Banner */
         .shipping-banner {
             background: var(--color-white);
-            padding: 2rem;
+            padding: 2.5rem 1.5rem;
             border-bottom: 1px solid #eee;
         }
 
@@ -225,7 +318,7 @@
         }
 
         .shipping-icon {
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: var(--color-primary);
         }
 
@@ -233,6 +326,7 @@
             display: block;
             color: var(--color-secondary);
             font-family: var(--font-heading);
+            font-size: 1rem;
         }
 
         .shipping-text {
@@ -240,7 +334,7 @@
             color: var(--color-gray-text);
         }
 
-        /* Generic Section Styles */
+        /* Section Header */
         .section-header {
             text-align: center;
             margin: 4rem 0 2rem;
@@ -257,6 +351,7 @@
 
         .section-header p {
             color: var(--color-gray-text);
+            font-size: 1.05rem;
         }
 
         /* Plans Grid */
@@ -276,6 +371,7 @@
             padding: 2rem;
             text-align: center;
             transition: all 0.3s ease;
+            position: relative;
         }
 
         .plan-card:hover {
@@ -286,7 +382,6 @@
 
         .plan-card.featured {
             border: 2px solid var(--color-primary);
-            position: relative;
         }
 
         .featured-tag {
@@ -296,18 +391,29 @@
             transform: translateX(-50%);
             background: var(--color-primary);
             color: white;
-            padding: 4px 12px;
+            padding: 4px 14px;
             border-radius: 20px;
             font-size: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
         }
 
+        .plan-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
         .plan-name {
             font-family: var(--font-heading);
             font-size: 1.25rem;
             font-weight: 700;
-            margin: 1rem 0;
+            margin: 0.5rem 0;
+        }
+
+        .plan-desc {
+            font-size: 0.9rem;
+            color: var(--color-gray-text);
+            margin-bottom: 1rem;
         }
 
         .plan-price {
@@ -317,6 +423,12 @@
             font-family: var(--font-heading);
         }
 
+        .plan-price-period {
+            font-size: 0.9rem;
+            color: var(--color-gray-text);
+            font-weight: 400;
+        }
+
         .plan-features {
             list-style: none;
             margin: 1.5rem 0;
@@ -324,12 +436,16 @@
         }
 
         .plan-features li {
-            padding: 0.5rem 0;
+            padding: 0.6rem 0;
             border-bottom: 1px solid #f5f5f5;
             color: var(--color-gray-text);
             font-size: 0.9rem;
             display: flex;
             gap: 0.5rem;
+        }
+
+        .plan-features li:last-child {
+            border-bottom: none;
         }
 
         .plan-features li::before {
@@ -341,14 +457,17 @@
         .btn-outline {
             display: block;
             width: 100%;
-            padding: 0.8rem;
+            padding: 0.9rem;
             border: 2px solid var(--color-secondary);
             background: transparent;
             color: var(--color-secondary);
             border-radius: var(--radius-btn);
             font-weight: 700;
+            font-size: 0.9rem;
             cursor: pointer;
             transition: 0.3s;
+            text-decoration: none;
+            text-align: center;
         }
 
         .btn-outline:hover {
@@ -364,16 +483,49 @@
 
         .plan-card.featured .btn-outline:hover {
             background: var(--color-primary-dark);
+            border-color: var(--color-primary-dark);
         }
 
-        /* Products Grid */
+        /* Products Section */
+        .products-section {
+            background: var(--color-bg-light);
+            padding-bottom: 4rem;
+        }
+
+        .products-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            padding: 0 1rem;
+        }
+
+        .tab-btn {
+            padding: 0.6rem 1.25rem;
+            border: 2px solid var(--color-gray-light);
+            background: var(--color-white);
+            color: var(--color-secondary);
+            border-radius: var(--radius-btn);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            background: var(--color-primary);
+            border-color: var(--color-primary);
+            color: var(--color-white);
+        }
+
         .products-grid {
             max-width: 1200px;
-            margin: 0 auto 4rem;
+            margin: 0 auto;
             padding: 0 1.5rem;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 1.5rem;
         }
 
         .product-card {
@@ -381,7 +533,7 @@
             border-radius: var(--radius-card);
             overflow: hidden;
             box-shadow: var(--shadow-card);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .product-card:hover {
@@ -390,12 +542,12 @@
         }
 
         .product-image {
-            height: 200px;
-            background: #e9ecef;
+            height: 180px;
+            background: var(--color-gray-light);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
+            font-size: 4rem;
             position: relative;
         }
 
@@ -405,7 +557,19 @@
             left: 10px;
             background: var(--color-accent);
             color: white;
-            padding: 4px 8px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .badge-new {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--color-primary);
+            color: white;
+            padding: 4px 10px;
             border-radius: 4px;
             font-size: 0.75rem;
             font-weight: 700;
@@ -418,7 +582,7 @@
         .product-cat {
             font-size: 0.75rem;
             text-transform: uppercase;
-            color: var(--color-gray-text);
+            color: var(--color-primary);
             font-weight: 600;
             letter-spacing: 0.5px;
         }
@@ -429,21 +593,37 @@
             font-weight: 700;
             margin: 0.25rem 0 0.5rem;
             line-height: 1.3;
+            color: var(--color-secondary);
+        }
+
+        .product-desc {
+            font-size: 0.85rem;
+            color: var(--color-gray-text);
+            margin-bottom: 0.75rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         .product-meta {
             font-size: 0.8rem;
             color: var(--color-gray-text);
             display: flex;
-            gap: 1rem;
+            gap: 0.5rem;
             margin-bottom: 1rem;
+        }
+
+        .product-meta span {
+            background: var(--color-bg-light);
+            padding: 2px 8px;
+            border-radius: 4px;
         }
 
         .product-bottom {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 1rem;
             padding-top: 1rem;
             border-top: 1px solid #f0f0f0;
         }
@@ -456,7 +636,7 @@
 
         .btn-add {
             background: white;
-            border: 1px solid var(--color-primary);
+            border: 2px solid var(--color-primary);
             color: var(--color-primary);
             padding: 0.5rem 1rem;
             border-radius: var(--radius-btn);
@@ -471,16 +651,29 @@
             color: white;
         }
 
-        /* How it works */
+        /* How it Works */
         .steps-section {
             background: var(--color-white);
             padding: 4rem 1.5rem;
             text-align: center;
         }
 
+        .steps-section h2 {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--color-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .steps-section > p {
+            color: var(--color-gray-text);
+            margin-bottom: 3rem;
+        }
+
         .steps-grid {
             max-width: 1000px;
-            margin: 3rem auto 0;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
@@ -491,8 +684,105 @@
         }
 
         .step-num {
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
+            background: var(--color-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.25rem;
+            margin: 0 auto 1rem;
+            font-family: var(--font-heading);
+        }
+
+        .step-item h3 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-secondary);
+        }
+
+        .step-item p {
+            font-size: 0.9rem;
+            color: var(--color-gray-text);
+        }
+
+        /* Preparation Section */
+        .preparation {
+            background: var(--color-bg-light);
+            padding: 4rem 1.5rem;
+        }
+
+        .preparation-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .preparation-visual {
+            background: var(--color-primary);
+            border-radius: var(--radius-card);
+            padding: 3rem;
+            text-align: center;
+            color: var(--color-white);
+        }
+
+        .preparation-timer {
+            font-family: var(--font-heading);
+            font-size: 5rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .preparation-timer span {
+            font-size: 1.5rem;
+            vertical-align: super;
+        }
+
+        .preparation-visual p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .preparation-text h2 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--color-secondary);
+        }
+
+        .preparation-text > p {
+            color: var(--color-gray-text);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .preparation-steps {
+            list-style: none;
+        }
+
+        .preparation-steps li {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .preparation-steps li:last-child {
+            border-bottom: none;
+        }
+
+        .prep-step-num {
+            width: 32px;
+            height: 32px;
             background: var(--color-primary);
             color: white;
             border-radius: 50%;
@@ -500,18 +790,81 @@
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            margin: 0 auto 1rem;
+            font-size: 0.85rem;
+            flex-shrink: 0;
         }
 
-        .step-item h3 {
+        .prep-step-content h4 {
             font-family: var(--font-heading);
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            color: var(--color-secondary);
         }
 
-        .step-item p {
+        .prep-step-content p {
             font-size: 0.9rem;
             color: var(--color-gray-text);
+        }
+
+        /* Delivery Section */
+        .delivery {
+            background: var(--color-white);
+            padding: 4rem 1.5rem;
+        }
+
+        .delivery-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .delivery-card {
+            background: var(--color-bg-light);
+            border-radius: var(--radius-card);
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .delivery-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .delivery-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .delivery-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--color-secondary);
+        }
+
+        .delivery-card p {
+            color: var(--color-gray-text);
+            font-size: 0.9rem;
+        }
+
+        .delivery-days {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .delivery-day {
+            padding: 0.4rem 0.75rem;
+            background: var(--color-primary);
+            color: white;
+            border-radius: var(--radius-btn);
+            font-size: 0.8rem;
+            font-weight: 600;
         }
 
         /* Footer */
@@ -525,15 +878,55 @@
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 3rem;
             margin-bottom: 3rem;
         }
 
+        .footer-brand {
+            max-width: 280px;
+        }
+
+        .footer-brand .logo {
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .footer-brand p {
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: var(--radius-btn);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s;
+            font-size: 1.1rem;
+        }
+
+        .footer-social a:hover {
+            background: var(--color-primary);
+        }
+
         .footer-col h4 {
             font-family: var(--font-heading);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
             color: var(--color-primary);
+            font-size: 1rem;
         }
 
         .footer-col ul {
@@ -556,245 +949,659 @@
         }
 
         .copyright {
-            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             padding-top: 2rem;
             border-top: 1px solid rgba(255,255,255,0.1);
             font-size: 0.85rem;
             color: #888;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .payment-methods {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .payment-methods span {
+            background: rgba(255,255,255,0.1);
+            padding: 0.4rem 0.75rem;
+            border-radius: var(--radius-btn);
+            font-size: 0.8rem;
+        }
+
+        /* Floating Cart */
+        .floating-cart {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 99;
+        }
+
+        .floating-cart-btn {
+            width: 60px;
+            height: 60px;
+            background: var(--color-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-white);
+            font-size: 1.5rem;
+            box-shadow: 0 4px 20px rgba(255, 87, 34, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            position: relative;
+        }
+
+        .floating-cart-btn:hover {
+            transform: scale(1.1);
+            background: var(--color-accent-dark);
+        }
+
+        .floating-cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 24px;
+            height: 24px;
+            background: var(--color-primary);
+            border-radius: 50%;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
         }
 
         @media (max-width: 768px) {
             nav { display: none; }
-            .hero-content { grid-template-columns: 1fr; text-align: center; }
-            .hero-text p { margin: 0 auto 2rem; }
-            .steps-grid { grid-template-columns: 1fr 1fr; }
+            
+            .hero-content { 
+                grid-template-columns: 1fr; 
+                text-align: center; 
+            }
+            
+            .hero-text p { 
+                margin: 0 auto 1.5rem; 
+            }
+            
+            .hero-features {
+                justify-content: center;
+            }
+
+            .hero-image {
+                max-width: 400px;
+                margin: 2rem auto 0;
+            }
+            
+            .steps-grid { 
+                grid-template-columns: 1fr 1fr; 
+            }
+
+            .preparation-content {
+                grid-template-columns: 1fr;
+            }
+
+            .delivery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-brand {
+                max-width: 100%;
+            }
+
+            .footer-social {
+                justify-content: center;
+            }
+
+            .copyright {
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- Top Bar -->
     <div class="top-bar">
-        🚚 Despachos GRATIS sobre $30.000 en todo Santiago
+        🚚 Despachos <strong>GRATIS</strong> sobre $30.000 en Santiago • Lunes, Miércoles y Viernes
     </div>
 
+    <!-- Header -->
     <header>
         <div class="header-inner">
             <a href="#" class="logo">
+                <span class="logo-icon">🌱</span>
                 Flor de <span>Cocina</span>
             </a>
             <nav>
                 <a href="#planes">Planes</a>
                 <a href="#productos">Carta</a>
                 <a href="#como-funciona">Cómo Funciona</a>
+                <a href="#contacto">Contacto</a>
             </nav>
             <a href="#" class="cart-btn">
-                🛒 Tu Pedido (0)
+                🛒 Carrito <span class="cart-count">0</span>
             </a>
         </div>
     </header>
 
+    <!-- Hero -->
     <section class="hero">
         <div class="hero-content">
             <div class="hero-text">
-                <h1>Comida Real,<br>Lista en <span>Minutos</span></h1>
-                <p>Olvídate de cocinar. Platos preparados sellados al vacío, con ingredientes 100% naturales. Del freezer a tu mesa en 8 minutos.</p>
+                <h1>Comida Casera de Verdad,<br>Lista en <span>8 Minutos</span></h1>
+                <p>Platos preparados por un chef con 25 años de experiencia. Sellados al vacío y congelados. Del freezer a tu mesa sin cocinar.</p>
+                <div class="hero-features">
+                    <div class="hero-feature">
+                        <div class="hero-feature-icon">⏱️</div>
+                        <span>8 min preparación</span>
+                    </div>
+                    <div class="hero-feature">
+                        <div class="hero-feature-icon">❄️</div>
+                        <span>Sellado al vacío</span>
+                    </div>
+                    <div class="hero-feature">
+                        <div class="hero-feature-icon">🚚</div>
+                        <span>Despacho Santiago</span>
+                    </div>
+                </div>
                 <a href="#planes" class="btn-primary">Ver Planes Semanales</a>
+                <a href="#productos" class="btn-secondary">Ver Carta</a>
             </div>
-            <div class="hero-image-container">
-                <div class="hero-image">
-                    🥘
+            <div class="hero-image">
+                🥘
+                <div class="hero-badge">
+                    <div class="hero-badge-icon">👨‍🍳</div>
+                    <div class="hero-badge-text">
+                        <strong>25 Años</strong>
+                        de experiencia culinaria
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Features Banner -->
     <div class="shipping-banner">
         <div class="shipping-banner-inner">
             <div class="shipping-item">
                 <div class="shipping-icon">⏱️</div>
-                <div class="shipping-text"><strong>Ahorra Tiempo</strong>8 min al agua hirviendo</div>
+                <div class="shipping-text">
+                    <strong>Ahorra Tiempo</strong>
+                    8 min al agua hirviendo
+                </div>
             </div>
             <div class="shipping-item">
                 <div class="shipping-icon">❄️</div>
-                <div class="shipping-text"><strong>Siempre Fresco</strong>Sellado al vacío</div>
+                <div class="shipping-text">
+                    <strong>Siempre Fresco</strong>
+                    Sellado al vacío, 3 meses de duración
+                </div>
             </div>
             <div class="shipping-item">
                 <div class="shipping-icon">🚚</div>
-                <div class="shipping-text"><strong>Despacho Gratis</strong>Sobre $30.000</div>
+                <div class="shipping-text">
+                    <strong>Despacho Gratis</strong>
+                    Sobre $30.000 en Santiago
+                </div>
+            </div>
+            <div class="shipping-item">
+                <div class="shipping-icon">📅</div>
+                <div class="shipping-text">
+                    <strong>Días de Reparto</strong>
+                    Lunes, Miércoles y Viernes
+                </div>
             </div>
         </div>
     </div>
 
-    <section class="section-header">
-        <h2>Packs Recomendados</h2>
-        <p>Ahorra comprando tus packs semanales</p>
+    <!-- Plans Section -->
+    <section class="section-header" id="planes">
+        <h2>Planes Semanales</h2>
+        <p>Planifica tu semana y ahorra. Recibe tus platos favoritos cada semana.</p>
     </section>
 
-    <div class="plans-grid" id="planes">
+    <div class="plans-grid">
         <div class="plan-card">
+            <div class="plan-icon">🥗</div>
             <div class="plan-name">Plan Individual</div>
-            <div class="plan-price">$32.900</div>
+            <p class="plan-desc">Perfecto para una persona</p>
+            <div class="plan-price">$32.900<span class="plan-price-period">/semana</span></div>
             <ul class="plan-features">
-                <li>5 Platos de fondo</li>
-                <li>3 Acompañamientos</li>
-                <li>Ideal para 1 persona</li>
+                <li>5 platos principales a elección</li>
+                <li>3 acompañamientos incluidos</li>
+                <li>Despacho gratis en Santiago</li>
+                <li>Pausa o cancela cuando quieras</li>
             </ul>
-            <button class="btn-outline">Seleccionar</button>
+            <a href="#" class="btn-outline">Seleccionar</a>
         </div>
 
         <div class="plan-card featured">
-            <span class="featured-tag">Más Popular</span>
+            <span class="featured-tag">⭐ Más Popular</span>
+            <div class="plan-icon">👨‍👩‍👧</div>
             <div class="plan-name">Plan Familiar</div>
-            <div class="plan-price">$59.900</div>
+            <p class="plan-desc">Ideal para toda la familia</p>
+            <div class="plan-price">$59.900<span class="plan-price-period">/semana</span></div>
             <ul class="plan-features">
-                <li>10 Platos de fondo</li>
-                <li>6 Acompañamientos</li>
-                <li>Envío Gratis</li>
+                <li>10 platos principales a elección</li>
+                <li>6 acompañamientos incluidos</li>
+                <li>Despacho gratis en Santiago</li>
+                <li>Pausa o cancela cuando quieras</li>
+                <li>Bolsa térmica reutilizable</li>
             </ul>
-            <button class="btn-outline">Seleccionar</button>
+            <a href="#" class="btn-outline">Seleccionar</a>
         </div>
 
         <div class="plan-card">
-            <div class="plan-name">Pack Degustación</div>
-            <div class="plan-price">$19.900</div>
+            <div class="plan-icon">🎒</div>
+            <div class="plan-name">Plan Universitario</div>
+            <p class="plan-desc">Comida de mamá lejos de casa</p>
+            <div class="plan-price">$45.900<span class="plan-price-period">/semana</span></div>
             <ul class="plan-features">
-                <li>3 Platos estrella</li>
-                <li>2 Acompañamientos</li>
-                <li>Prueba nuestra calidad</li>
+                <li>7 platos principales</li>
+                <li>4 acompañamientos incluidos</li>
+                <li>Despacho gratis en Santiago</li>
+                <li>Porciones individuales</li>
             </ul>
-            <button class="btn-outline">Seleccionar</button>
+            <a href="#" class="btn-outline">Seleccionar</a>
         </div>
     </div>
 
-    <section class="section-header">
-        <h2>Platos Destacados</h2>
-        <p>Elige a la carta tus favoritos</p>
+    <!-- Products Section -->
+    <section class="products-section" id="productos">
+        <div class="section-header">
+            <h2>Nuestra Carta</h2>
+            <p>Elige tus platos favoritos. Cada uno viene sellado al vacío.</p>
+        </div>
+
+        <div class="products-tabs">
+            <button class="tab-btn active">Todos</button>
+            <button class="tab-btn">Proteínas</button>
+            <button class="tab-btn">Acompañamientos</button>
+            <button class="tab-btn">Packs</button>
+        </div>
+
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="badge-discount">Favorito</span>
+                    🥩
+                </div>
+                <div class="product-info">
+                    <div class="product-cat">Proteína</div>
+                    <h3 class="product-name">Carne Mechada al Vino</h3>
+                    <p class="product-desc">Carne de res desmechada, cocida lentamente en salsa de vino tinto.</p>
+                    <div class="product-meta">
+                        <span>⏱️ 8 min</span>
+                        <span>👥 4-5 porc.</span>
+                    </div>
+                    <div class="product-bottom">
+                        <div class="price">$8.900</div>
+                        <button class="btn-add">Agregar +</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    🍗
+                </div>
+                <div class="product-info">
+                    <div class="product-cat">Proteína</div>
+                    <h3 class="product-name">Pollo al Curry</h3>
+                    <p class="product-desc">Trozos de pollo en cremosa salsa de curry con leche de coco.</p>
+                    <div class="product-meta">
+                        <span>⏱️ 8 min</span>
+                        <span>👥 4 porc.</span>
+                    </div>
+                    <div class="product-bottom">
+                        <div class="price">$7.900</div>
+                        <button class="btn-add">Agregar +</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="badge-new">Nuevo</span>
+                    🐟
+                </div>
+                <div class="product-info">
+                    <div class="product-cat">Proteína</div>
+                    <h3 class="product-name">Salmón Teriyaki</h3>
+                    <p class="product-desc">Filete de salmón glaseado con salsa teriyaki casera.</p>
+                    <div class="product-meta">
+                        <span>⏱️ 10 min</span>
+                        <span>👥 2 porc.</span>
+                    </div>
+                    <div class="product-bottom">
+                        <div class="price">$11.900</div>
+                        <button class="btn-add">Agregar +</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    🥘
+                </div>
+                <div class="product-info">
+                    <div class="product-cat">Proteína</div>
+                    <h3 class="product-name">Costillar BBQ</h3>
+                    <p class="product-desc">Costillar de cerdo glaseado con salsa BBQ ahumada.</p>
+                    <div class="product-meta">
+                        <span>⏱️ 10 min</span>
+                        <span>👥 4 porc.</span>
+                    </div>
+                    <div class="product-bottom">
+                        <div class="price">$12.900</div>
+                        <button class="btn-add">Agregar +</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    🍚
+                </div>
+                <div class="product-info">
+                    <div class="product-cat">Acompañamiento</div>
+                    <h3 class="product-name">Arroz con Cilantro</h3>
+                    <p class="product-desc">Arroz jazmín aromático con cilantro fresco y limón.</p>
+                    <div class="product-meta">
+                        <span>⏱️ 5 min</span>
+                        <span>👥 4 porc.</span>
+                    </div>
+                    <div class="product-bottom">
+                        <div class="price">$3.900</div>
+                        <button class="btn-add">Agregar +</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="badge-discount">Favorito</span>
+                    🥔
+                </div>
+                <div class="product-info">
+                    <div class="product-cat">Acompañamiento</div>
+                    <h3 class="product-name">Gratín de Papas</h3>
+                    <p class="product-desc">Papas laminadas gratinadas con crema y queso gruyère.</p>
+                    <div class="product-meta">
+                        <span>⏱️ 8 min</span>
+                        <span>👥 4 porc.</span>
+                    </div>
+                    <div class="product-bottom">
+                        <div class="price">$4.900</div>
+                        <button class="btn-add">Agregar +</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    🥗
+                </div>
+                <div class="product-info">
+                    <div class="product-cat">Acompañamiento</div>
+                    <h3 class="product-name">Ensalada Mediterránea</h3>
+                    <p class="product-desc">Mix de hojas verdes, tomates cherry, aceitunas y feta.</p>
+                    <div class="product-meta">
+                        <span>⏱️ 0 min</span>
+                        <span>👥 2 porc.</span>
+                    </div>
+                    <div class="product-bottom">
+                        <div class="price">$4.500</div>
+                        <button class="btn-add">Agregar +</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    🌽
+                </div>
+                <div class="product-info">
+                    <div class="product-cat">Acompañamiento</div>
+                    <h3 class="product-name">Choclo Cremoso</h3>
+                    <p class="product-desc">Granos de choclo en salsa cremosa con mantequilla.</p>
+                    <div class="product-meta">
+                        <span>⏱️ 5 min</span>
+                        <span>👥 4 porc.</span>
+                    </div>
+                    <div class="product-bottom">
+                        <div class="price">$3.500</div>
+                        <button class="btn-add">Agregar +</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <div class="products-grid" id="productos">
-        <div class="product-card">
-            <div class="product-image">
-                <span class="badge-discount">15% OFF</span>
-                🥩
-            </div>
-            <div class="product-info">
-                <div class="product-cat">Carne</div>
-                <h3 class="product-name">Carne Mechada</h3>
-                <div class="product-meta">
-                    <span>200g</span> • <span>Sin Acomp.</span>
-                </div>
-                <div class="product-bottom">
-                    <div class="price">$8.900</div>
-                    <button class="btn-add">Agregar +</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="product-card">
-            <div class="product-image">
-                🍗
-            </div>
-            <div class="product-info">
-                <div class="product-cat">Pollo</div>
-                <h3 class="product-name">Pollo al Curry</h3>
-                <div class="product-meta">
-                    <span>250g</span> • <span>Salsa Coco</span>
-                </div>
-                <div class="product-bottom">
-                    <div class="price">$7.900</div>
-                    <button class="btn-add">Agregar +</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="product-card">
-            <div class="product-image">
-                🐟
-            </div>
-            <div class="product-info">
-                <div class="product-cat">Pescado</div>
-                <h3 class="product-name">Salmón Teriyaki</h3>
-                <div class="product-meta">
-                    <span>180g</span> • <span>Premium</span>
-                </div>
-                <div class="product-bottom">
-                    <div class="price">$11.900</div>
-                    <button class="btn-add">Agregar +</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="product-card">
-            <div class="product-image">
-                🍚
-            </div>
-            <div class="product-info">
-                <div class="product-cat">Acompañamiento</div>
-                <h3 class="product-name">Arroz Árabe</h3>
-                <div class="product-meta">
-                    <span>200g</span> • <span>Vegano</span>
-                </div>
-                <div class="product-bottom">
-                    <div class="price">$3.500</div>
-                    <button class="btn-add">Agregar +</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    <!-- How it Works -->
     <section class="steps-section" id="como-funciona">
         <h2>¿Cómo Funciona?</h2>
+        <p>En 4 simples pasos tendrás comida de calidad lista para disfrutar.</p>
         <div class="steps-grid">
             <div class="step-item">
                 <div class="step-num">1</div>
                 <h3>Elige</h3>
-                <p>Selecciona tus packs o platos favoritos.</p>
+                <p>Selecciona un plan o arma tu pedido con tus platos favoritos.</p>
             </div>
             <div class="step-item">
                 <div class="step-num">2</div>
                 <h3>Recibe</h3>
-                <p>Despachamos a tu domicilio congelado.</p>
+                <p>Te lo llevamos a tu domicilio los Lunes, Miércoles o Viernes.</p>
             </div>
             <div class="step-item">
                 <div class="step-num">3</div>
                 <h3>Congela</h3>
-                <p>Duran hasta 3 meses en tu freezer.</p>
+                <p>Guarda en tu freezer. Duran hasta 3 meses sin perder sabor.</p>
             </div>
             <div class="step-item">
                 <div class="step-num">4</div>
                 <h3>Calienta</h3>
-                <p>Solo 8 minutos en agua hirviendo.</p>
+                <p>Hierve la bolsa por 8 minutos. ¡Listo para servir!</p>
             </div>
         </div>
     </section>
 
-    <footer>
+    <!-- Preparation -->
+    <section class="preparation">
+        <div class="preparation-content">
+            <div class="preparation-visual">
+                <div class="preparation-timer">8<span>min</span></div>
+                <p>Es todo lo que necesitas</p>
+            </div>
+            <div class="preparation-text">
+                <h2>Preparación Ultra Simple</h2>
+                <p>Nuestros platos vienen sellados al vacío y congelados. Solo necesitas agua hirviendo para tener una comida de calidad de restaurante.</p>
+                <ol class="preparation-steps">
+                    <li>
+                        <span class="prep-step-num">1</span>
+                        <div class="prep-step-content">
+                            <h4>Hierve agua</h4>
+                            <p>Llena una olla con agua suficiente para cubrir la bolsa.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="prep-step-num">2</span>
+                        <div class="prep-step-content">
+                            <h4>Sumerge la bolsa</h4>
+                            <p>Coloca la bolsa sellada directamente en el agua hirviendo.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="prep-step-num">3</span>
+                        <div class="prep-step-content">
+                            <h4>Espera 8-10 minutos</h4>
+                            <p>Deja cocinar a fuego bajo hasta que esté caliente.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="prep-step-num">4</span>
+                        <div class="prep-step-content">
+                            <h4>Abre y sirve</h4>
+                            <p>Corta la bolsa con cuidado y sirve directo en el plato.</p>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- Delivery Info -->
+    <section class="delivery">
+        <div class="section-header">
+            <h2>Información de Envío</h2>
+            <p>Despachamos en Santiago los días indicados. Planifica tu semana con nosotros.</p>
+        </div>
+        <div class="delivery-grid">
+            <div class="delivery-card">
+                <div class="delivery-icon">📅</div>
+                <h3>Días de Despacho</h3>
+                <p>Realizamos entregas tres veces por semana.</p>
+                <div class="delivery-days">
+                    <span class="delivery-day">Lunes</span>
+                    <span class="delivery-day">Miércoles</span>
+                    <span class="delivery-day">Viernes</span>
+                </div>
+            </div>
+            <div class="delivery-card">
+                <div class="delivery-icon">🚚</div>
+                <h3>Envío Gratis</h3>
+                <p>En compras sobre $30.000 el envío es gratis en Santiago.</p>
+            </div>
+            <div class="delivery-card">
+                <div class="delivery-icon">❄️</div>
+                <h3>Cadena de Frío</h3>
+                <p>Tus productos viajan en condiciones óptimas de temperatura.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto">
         <div class="footer-grid">
-            <div class="footer-col">
-                <h4>Flor de Cocina</h4>
-                <p style="color: #aaa; font-size: 0.9rem;">Platos preparados con amor y tecnología. Solucionamos tu semana con comida rica y saludable.</p>
+            <div class="footer-brand">
+                <a href="#" class="logo">🌱 Flor de <span>Cocina</span></a>
+                <p>Huerto y cocina. Platos preparados con ingredientes frescos, sellados al vacío y congelados. Calidad de chef en tu mesa.</p>
+                <div class="footer-social">
+                    <a href="#">📷</a>
+                    <a href="#">📘</a>
+                    <a href="#">💬</a>
+                </div>
             </div>
             <div class="footer-col">
                 <h4>Productos</h4>
                 <ul>
-                    <li><a href="#">Packs Semanales</a></li>
+                    <li><a href="#">Planes Semanales</a></li>
                     <li><a href="#">Proteínas</a></li>
                     <li><a href="#">Acompañamientos</a></li>
+                    <li><a href="#">Packs</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>Ayuda</h4>
+                <h4>Información</h4>
                 <ul>
+                    <li><a href="#">Cómo Funciona</a></li>
                     <li><a href="#">Zonas de Despacho</a></li>
                     <li><a href="#">Preguntas Frecuentes</a></li>
-                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contacto</h4>
+                <ul>
+                    <li><a href="#">hola@flordecocina.cl</a></li>
+                    <li><a href="#">+56 9 XXXX XXXX</a></li>
+                    <li><a href="#">Chicureo, Santiago</a></li>
                 </ul>
             </div>
         </div>
         <div class="copyright">
-            © 2024 Flor de Cocina. Todos los derechos reservados.
+            <p>© 2025 Flor de Cocina. Todos los derechos reservados.</p>
+            <div class="payment-methods">
+                <span>💳 Webpay</span>
+                <span>💳 Tarjetas</span>
+                <span>🏦 Transferencia</span>
+            </div>
         </div>
     </footer>
 
+    <!-- Floating Cart -->
+    <div class="floating-cart">
+        <button class="floating-cart-btn">
+            🛒
+            <span class="floating-cart-count">0</span>
+        </button>
+    </div>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Tab functionality
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        // Add to cart animation
+        let cartCount = 0;
+        const cartCountElements = document.querySelectorAll('.cart-count, .floating-cart-count');
+        const addBtns = document.querySelectorAll('.btn-add');
+        
+        addBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                cartCount++;
+                cartCountElements.forEach(el => el.textContent = cartCount);
+                
+                btn.textContent = '✓ Agregado';
+                btn.style.background = '#4CAF50';
+                btn.style.color = 'white';
+                btn.style.borderColor = '#4CAF50';
+                
+                setTimeout(() => {
+                    btn.textContent = 'Agregar +';
+                    btn.style.background = '';
+                    btn.style.color = '';
+                    btn.style.borderColor = '';
+                }, 1500);
+            });
+        });
+    </script>
 </body>
 </html>
