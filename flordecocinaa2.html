@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flor de Cocina | Platos Preparados - Estilo Take a Break</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Paleta Moderno/Corporativa (Estilo Take a Break) */
+            --color-primary: #4CAF50; /* Verde Fresco */
+            --color-primary-dark: #388E3C;
+            --color-secondary: #212529; /* Negro Suave */
+            --color-accent: #FF5722; /* Naranjo para acciones/descuentos */
+            --color-bg-light: #F8F9FA; /* Gris muy claro de fondo */
+            --color-white: #FFFFFF;
+            --color-gray-text: #6c757d;
+            
+            /* Tipografía */
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+            
+            /* UI Elements */
+            --shadow-card: 0 2px 10px rgba(0,0,0,0.05);
+            --shadow-hover: 0 10px 25px rgba(0,0,0,0.1);
+            --radius-btn: 6px; /* Bordes más rectos, estilo botón moderno */
+            --radius-card: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--color-bg-light);
+            color: var(--color-secondary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Top Bar de Anuncios */
+        .top-bar {
+            background: var(--color-secondary);
+            color: var(--color-white);
+            text-align: center;
+            padding: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--color-white);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            padding: 1rem 0;
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--color-secondary);
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--color-secondary);
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: color 0.2s ease;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        nav a:hover {
+            color: var(--color-primary);
+        }
+
+        .cart-btn {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 0.5rem 1.2rem;
+            border-radius: var(--radius-btn);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            transition: background 0.3s;
+        }
+
+        .cart-btn:hover {
+            background: var(--color-primary-dark);
+            color: white; /* Asegura contraste */
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--color-white);
+            padding: 4rem 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            color: var(--color-secondary);
+        }
+
+        .hero-text h1 span {
+            color: var(--color-primary);
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--color-gray-text);
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--color-accent);
+            color: var(--color-white);
+            padding: 1rem 2rem;
+            border-radius: var(--radius-btn);
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: transform 0.2s, background 0.2s;
+            box-shadow: 0 4px 15px rgba(255, 87, 34, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #E64A19;
+            transform: translateY(-2px);
+        }
+
+        .hero-image-container {
+            position: relative;
+        }
+
+        .hero-image {
+            width: 100%;
+            aspect-ratio: 4/3;
+            background: #eee;
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Features Banner */
+        .shipping-banner {
+            background: var(--color-white);
+            padding: 2rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .shipping-banner-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .shipping-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 0.5rem;
+        }
+
+        .shipping-icon {
+            font-size: 2rem;
+            color: var(--color-primary);
+        }
+
+        .shipping-text strong {
+            display: block;
+            color: var(--color-secondary);
+            font-family: var(--font-heading);
+        }
+
+        .shipping-text {
+            font-size: 0.9rem;
+            color: var(--color-gray-text);
+        }
+
+        /* Generic Section Styles */
+        .section-header {
+            text-align: center;
+            margin: 4rem 0 2rem;
+            padding: 0 1rem;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--color-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--color-gray-text);
+        }
+
+        /* Plans Grid */
+        .plans-grid {
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .plan-card {
+            background: var(--color-white);
+            border: 1px solid #eee;
+            border-radius: var(--radius-card);
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .plan-card:hover {
+            border-color: var(--color-primary);
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-5px);
+        }
+
+        .plan-card.featured {
+            border: 2px solid var(--color-primary);
+            position: relative;
+        }
+
+        .featured-tag {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .plan-name {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 1rem 0;
+        }
+
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            font-family: var(--font-heading);
+        }
+
+        .plan-features {
+            list-style: none;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+
+        .plan-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f5f5f5;
+            color: var(--color-gray-text);
+            font-size: 0.9rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .plan-features li::before {
+            content: '✓';
+            color: var(--color-primary);
+            font-weight: bold;
+        }
+
+        .btn-outline {
+            display: block;
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid var(--color-secondary);
+            background: transparent;
+            color: var(--color-secondary);
+            border-radius: var(--radius-btn);
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-outline:hover {
+            background: var(--color-secondary);
+            color: white;
+        }
+
+        .plan-card.featured .btn-outline {
+            background: var(--color-primary);
+            border-color: var(--color-primary);
+            color: white;
+        }
+
+        .plan-card.featured .btn-outline:hover {
+            background: var(--color-primary-dark);
+        }
+
+        /* Products Grid */
+        .products-grid {
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: var(--color-white);
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .product-image {
+            height: 200px;
+            background: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+        }
+
+        .badge-discount {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--color-accent);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .product-info {
+            padding: 1.25rem;
+        }
+
+        .product-cat {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--color-gray-text);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .product-name {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: 0.25rem 0 0.5rem;
+            line-height: 1.3;
+        }
+
+        .product-meta {
+            font-size: 0.8rem;
+            color: var(--color-gray-text);
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .price {
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--color-secondary);
+        }
+
+        .btn-add {
+            background: white;
+            border: 1px solid var(--color-primary);
+            color: var(--color-primary);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-btn);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+        }
+
+        .btn-add:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        /* How it works */
+        .steps-section {
+            background: var(--color-white);
+            padding: 4rem 1.5rem;
+            text-align: center;
+        }
+
+        .steps-grid {
+            max-width: 1000px;
+            margin: 3rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .step-item {
+            position: relative;
+        }
+
+        .step-num {
+            width: 40px;
+            height: 40px;
+            background: var(--color-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+
+        .step-item h3 {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-item p {
+            font-size: 0.9rem;
+            color: var(--color-gray-text);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-secondary);
+            color: white;
+            padding: 4rem 1.5rem 2rem;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 {
+            font-family: var(--font-heading);
+            margin-bottom: 1.5rem;
+            color: var(--color-primary);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-col a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        @media (max-width: 768px) {
+            nav { display: none; }
+            .hero-content { grid-template-columns: 1fr; text-align: center; }
+            .hero-text p { margin: 0 auto 2rem; }
+            .steps-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        🚚 Despachos GRATIS sobre $30.000 en todo Santiago
+    </div>
+
+    <header>
+        <div class="header-inner">
+            <a href="#" class="logo">
+                Flor de <span>Cocina</span>
+            </a>
+            <nav>
+                <a href="#planes">Planes</a>
+                <a href="#productos">Carta</a>
+                <a href="#como-funciona">Cómo Funciona</a>
+            </nav>
+            <a href="#" class="cart-btn">
+                🛒 Tu Pedido (0)
+            </a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Comida Real,<br>Lista en <span>Minutos</span></h1>
+                <p>Olvídate de cocinar. Platos preparados sellados al vacío, con ingredientes 100% naturales. Del freezer a tu mesa en 8 minutos.</p>
+                <a href="#planes" class="btn-primary">Ver Planes Semanales</a>
+            </div>
+            <div class="hero-image-container">
+                <div class="hero-image">
+                    🥘
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="shipping-banner">
+        <div class="shipping-banner-inner">
+            <div class="shipping-item">
+                <div class="shipping-icon">⏱️</div>
+                <div class="shipping-text"><strong>Ahorra Tiempo</strong>8 min al agua hirviendo</div>
+            </div>
+            <div class="shipping-item">
+                <div class="shipping-icon">❄️</div>
+                <div class="shipping-text"><strong>Siempre Fresco</strong>Sellado al vacío</div>
+            </div>
+            <div class="shipping-item">
+                <div class="shipping-icon">🚚</div>
+                <div class="shipping-text"><strong>Despacho Gratis</strong>Sobre $30.000</div>
+            </div>
+        </div>
+    </div>
+
+    <section class="section-header">
+        <h2>Packs Recomendados</h2>
+        <p>Ahorra comprando tus packs semanales</p>
+    </section>
+
+    <div class="plans-grid" id="planes">
+        <div class="plan-card">
+            <div class="plan-name">Plan Individual</div>
+            <div class="plan-price">$32.900</div>
+            <ul class="plan-features">
+                <li>5 Platos de fondo</li>
+                <li>3 Acompañamientos</li>
+                <li>Ideal para 1 persona</li>
+            </ul>
+            <button class="btn-outline">Seleccionar</button>
+        </div>
+
+        <div class="plan-card featured">
+            <span class="featured-tag">Más Popular</span>
+            <div class="plan-name">Plan Familiar</div>
+            <div class="plan-price">$59.900</div>
+            <ul class="plan-features">
+                <li>10 Platos de fondo</li>
+                <li>6 Acompañamientos</li>
+                <li>Envío Gratis</li>
+            </ul>
+            <button class="btn-outline">Seleccionar</button>
+        </div>
+
+        <div class="plan-card">
+            <div class="plan-name">Pack Degustación</div>
+            <div class="plan-price">$19.900</div>
+            <ul class="plan-features">
+                <li>3 Platos estrella</li>
+                <li>2 Acompañamientos</li>
+                <li>Prueba nuestra calidad</li>
+            </ul>
+            <button class="btn-outline">Seleccionar</button>
+        </div>
+    </div>
+
+    <section class="section-header">
+        <h2>Platos Destacados</h2>
+        <p>Elige a la carta tus favoritos</p>
+    </section>
+
+    <div class="products-grid" id="productos">
+        <div class="product-card">
+            <div class="product-image">
+                <span class="badge-discount">15% OFF</span>
+                🥩
+            </div>
+            <div class="product-info">
+                <div class="product-cat">Carne</div>
+                <h3 class="product-name">Carne Mechada</h3>
+                <div class="product-meta">
+                    <span>200g</span> • <span>Sin Acomp.</span>
+                </div>
+                <div class="product-bottom">
+                    <div class="price">$8.900</div>
+                    <button class="btn-add">Agregar +</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-image">
+                🍗
+            </div>
+            <div class="product-info">
+                <div class="product-cat">Pollo</div>
+                <h3 class="product-name">Pollo al Curry</h3>
+                <div class="product-meta">
+                    <span>250g</span> • <span>Salsa Coco</span>
+                </div>
+                <div class="product-bottom">
+                    <div class="price">$7.900</div>
+                    <button class="btn-add">Agregar +</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-image">
+                🐟
+            </div>
+            <div class="product-info">
+                <div class="product-cat">Pescado</div>
+                <h3 class="product-name">Salmón Teriyaki</h3>
+                <div class="product-meta">
+                    <span>180g</span> • <span>Premium</span>
+                </div>
+                <div class="product-bottom">
+                    <div class="price">$11.900</div>
+                    <button class="btn-add">Agregar +</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-image">
+                🍚
+            </div>
+            <div class="product-info">
+                <div class="product-cat">Acompañamiento</div>
+                <h3 class="product-name">Arroz Árabe</h3>
+                <div class="product-meta">
+                    <span>200g</span> • <span>Vegano</span>
+                </div>
+                <div class="product-bottom">
+                    <div class="price">$3.500</div>
+                    <button class="btn-add">Agregar +</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="steps-section" id="como-funciona">
+        <h2>¿Cómo Funciona?</h2>
+        <div class="steps-grid">
+            <div class="step-item">
+                <div class="step-num">1</div>
+                <h3>Elige</h3>
+                <p>Selecciona tus packs o platos favoritos.</p>
+            </div>
+            <div class="step-item">
+                <div class="step-num">2</div>
+                <h3>Recibe</h3>
+                <p>Despachamos a tu domicilio congelado.</p>
+            </div>
+            <div class="step-item">
+                <div class="step-num">3</div>
+                <h3>Congela</h3>
+                <p>Duran hasta 3 meses en tu freezer.</p>
+            </div>
+            <div class="step-item">
+                <div class="step-num">4</div>
+                <h3>Calienta</h3>
+                <p>Solo 8 minutos en agua hirviendo.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Flor de Cocina</h4>
+                <p style="color: #aaa; font-size: 0.9rem;">Platos preparados con amor y tecnología. Solucionamos tu semana con comida rica y saludable.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Productos</h4>
+                <ul>
+                    <li><a href="#">Packs Semanales</a></li>
+                    <li><a href="#">Proteínas</a></li>
+                    <li><a href="#">Acompañamientos</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Ayuda</h4>
+                <ul>
+                    <li><a href="#">Zonas de Despacho</a></li>
+                    <li><a href="#">Preguntas Frecuentes</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2024 Flor de Cocina. Todos los derechos reservados.
+        </div>
+    </footer>
+
+</body>
+</html>
